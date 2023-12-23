@@ -4,10 +4,12 @@
   "description": "Project Challenge 5",
   "main": "./server.ts",
   "scripts": {
+    "start": "node ./dist/src/server.js",
     "dev": "ts-node-dev ./server.ts",
+    "lint": "eslint ./src --ext .ts",
     "build": "tsc",
-    "migrate:up": "knex migrate:up",
     "test": "jest",
+    "migrate:up": "knex migrate:up",
     "migrate:rollback": "knex migrate:rollback",
     "migrate:rollback:all": "knex migrate:rollback --all"
   },

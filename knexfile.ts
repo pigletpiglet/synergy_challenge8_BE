@@ -5,9 +5,11 @@ const config: { [key: string]: Knex.Config } = {
   development: {
     client: 'postgresql',
     connection: {
+      host: 'monorail.proxy.rlwy.net',
+      database: 'railway',
       user: 'postgres',
-      database: 'synergy',
-      password: '1234',
+      password: 'AggbB4g4dcG*2E1*DbdBBE2Bd516FA--',
+      port: 58407,
     },
     pool: {
       min: 2,
