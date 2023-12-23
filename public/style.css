@@ -1,0 +1,37 @@
+.uvp-list ul {
+    list-style: none;
+}
+
+.uvp-list ul>li {
+    clear: left;
+    padding: .5rem 0;
+}
+
+.uvp-list ul>li:before {
+    content: "";
+    display: block;
+    float: left;
+    margin-left: -1.5rem;
+}
+
+.uvp-list ul>li:before {
+    background: url("fi_check.svg");
+    background-size: cover;
+    background-position: center;
+    background-color: #CFD4ED;
+    border-radius: 100%;
+    padding: .5rem;
+
+}
+
+@media only screen and (max-width: 992px) {
+    section {
+        padding-top: 2rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    section {
+        padding-top: 8rem;
+    }
+}

@@ -1,0 +1,56 @@
+paths:
+  /api/users/{name}:
+    get:
+      summary: Fetch User information
+      tags:
+        - Users
+      consumes:
+        - application/json
+      parameters:
+        - name: name
+          in: path
+          description: 'Filter cars through name'
+          required: false
+          schema:
+            type: string
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Users Result
+          content:
+            'application/json':
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Default'
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: '#/components/schemas/UserResponse'
+  /api/users:
+    post:
+      summary: Add Users only done by admin or super
+      tags:
+        - Users
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: User Result
+          content:
+            'application/json':
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Default'
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: '#/components/schemas/UserResponse'

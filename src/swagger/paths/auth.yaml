@@ -1,0 +1,108 @@
+paths:
+  /api/auth/login:
+    post:
+      summary: Login User
+      tags:
+        - Auth
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/AuthLoginRequest'
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Access token
+          content:
+            'application/json':
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Default'
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: '#/components/schemas/AuthLoginResponse'
+  /api/auth/register:
+    post:
+      summary: Register User
+      tags:
+        - Auth
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/AuthRegisterRequest'
+      produces:
+        - application/json
+      responses:
+        201:
+          description: Registered User
+          content:
+            'application/json':
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Default'
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: '#/components/schemas/AuthRegisterResponse'
+  /api/auth/me:
+    get:
+      summary: Get Logged In User
+      security:
+        - BearerAuth: []
+      tags:
+        - Auth
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: User data
+          content:
+            'application/json':
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Default'
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: '#/components/schemas/UserResponse'
+  /api/auth/upgrade/{id}:
+    get:
+      summary: Upgrade User to Admin Status can only be done by super
+      security:
+        - BearerAuth: []
+      tags:
+        - Auth
+      parameters:
+        - name: id
+          in: path
+          description: 'The user ID to be upgraded. '
+          required: true
+          schema:
+            type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: User data
+          content:
+            'application/json':
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Default'
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: '#/components/schemas/UserResponse'
