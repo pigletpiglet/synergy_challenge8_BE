@@ -5,6 +5,7 @@
   "main": "./server.ts",
   "scripts": {
     "dev": "ts-node-dev ./server.ts",
+    "build": "tsc",
     "migrate:up": "knex migrate:up",
     "test": "jest",
     "migrate:rollback": "knex migrate:rollback",
